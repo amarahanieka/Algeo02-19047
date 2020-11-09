@@ -37,18 +37,19 @@ def jadiinvektor(a):
     print(vectorizer.get_feature_names())
     print(X.toarray())
 
-#menghitung panjang string
-def panjangteks(x):
+#menghitung panjang array x
+def panjang(x):
     n=0
     for i in x:
         n+=1
     return n
 
+#fungsi vektor berfungsi untuk mengubah teks menjadi vektor kata
 def vektor(x):
     list=[]
     string=''
     i=0
-    n=panjangteks(x)
+    n=panjang(x)
     while (i<n):
         if x[i]!=' ':
             string+=x[i]
@@ -58,5 +59,23 @@ def vektor(x):
         if (i==n-1):
             list.append(string)
             string=''
+        i+=1
+    return list
+
+#fungsi basis sebagai vektor basis untuk membandingkan query dan dokumen
+def basis(x):
+    list=[]
+    i=0
+    while i<panjang(x):
+        j=0
+        if panjang(list)==0:
+            list.append(x[i])
+        found=False
+        while j<panjang(list):
+            if x[i]==list[j]:
+                found=True
+            j+=1
+        if found==False:
+            list.append(x[i])
         i+=1
     return list
