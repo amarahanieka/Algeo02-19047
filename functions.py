@@ -79,3 +79,18 @@ def basis(x):
             list.append(x[i])
         i+=1
     return list
+
+#Array frekuensi kata dalam suatu kalimat 
+#x adalah kalimat yang sudah di-simplify
+
+def jadiinvektor(x):
+    vect2 = {}
+    for token in vektor(x):
+        if token in vect2:
+            vect2[token] += 1
+        else:
+            vect2[token] = 1
+    a = []
+    for i in vect2:
+        a += [vect2[i]]
+    print(a)
