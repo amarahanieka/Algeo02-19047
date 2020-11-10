@@ -55,7 +55,7 @@ def vektor(x):
         i+=1
     return list
 
-#fungsi basis sebagai vektor basis untuk membandingkan query dan dokumen
+#fungsi basis sebagai vektor basis untuk membuat term
 def basis(x):
     list=[]
     i=0
@@ -75,20 +75,15 @@ def basis(x):
 
 #Untuk menghitung jumlah elemen array
 
-def getElmtArray(x):
-    element=0
-    for i in x:
-        element= element+1
-    return element
 
 #Buat vektor
 
 def jadiinvektor(x, term): #Contoh x: D1, D2, query (yang sudah divektorbasiskan)
     #Inisialisasi vektor
-    frekuensi = [0 for i in range (getElmtArray(term))]
+    frekuensi = [0 for i in range (panjang(term))]
     #Inisialisasi vektor
     for token in x:
-        for i in range (getElmtArray(term)):
+        for i in range (panjang(term)):
             if(token==term[i]):
                 frekuensi[i]=frekuensi[i]+1
     return frekuensi
