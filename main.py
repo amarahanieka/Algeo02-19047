@@ -21,8 +21,14 @@ q = Simplify(query)
 #Temuin kata-katanya
 D1 = vektor(d1)
 D2 = vektor(d2)
+D3 = vektor(d3)
 Q = vektor(q)
 
 #Term hasil concat dari kata-kata yang ada di dokumen sama query.
 
 term = basis(D1+D2+Q)
+
+print(jadiinvektor(D1))
+print(jadiinvektor(D2))
+print(jadiinvektor(D3))
+print(jadiinvektor(Q))
