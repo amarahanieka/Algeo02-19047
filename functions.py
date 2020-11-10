@@ -1,33 +1,90 @@
-from functions import *
+# import Sastrawi package
+from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
+# import StopWordRemoverFactory class
+# import Sastrawi package
+from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
+# import buat count vectorizer aokwokwokw
 
 
-#file1 = open("testcase.txt", "r")
-#teks1 = file1.read()
-teks1 = 'naik-naik ke puncak gunung,naik delman, si kancil anak nakal, pamanku dari desa, topi saya bundar, burung kaktua, anak gembala, cangkul-cangkul, abang tukang bakso, hujan rintik-rintik, ibu dan ayah. cicak di dinding, naik kereta api. bintang kecil.  diambil 10 lagu dan di bentuk kelompok'
-d1 = Simplify(teks1)
+# create stemmer
+factory = StemmerFactory()
+stemmer = factory.create_stemmer()
 
-#file2 = open("contoh1.txt", "r")
-#teks2 = file2.read()
-teks2 = 'Saingan Trump dari Partai Demokrat, Joe Biden, telah menyegel kemenangan di negara bagian Michigan, demikian menurut laporan Associated Press dan media-media AS lainnya. Dengan demikian, Biden hanya butuh 6 suara elektoral lagi untuk mencapai 270 suara elektoral, total suara yang disyaratkan bagi kandidat untuk melenggang ke Gedung Putih. Sementara itu, di luar TCF Center, yang menjadi lokasi penghitungan surat suara di Detroit, Michigan, pendukung Trump meminta penghitungan suara dihentikan. Hentikan penghitungan teriak para pendukung Trump berulang-ulang. Sekretaris Negara Michigan Jocelyn Benson menyebut gugatan hukum kubu Trump untuk mengakhiri penghitungan suara di negara bagian itu sebagai langkah sembrono, demikian menurut Reuters. Dia kemudian memberikan jaminan bahwa semua surat suara yang sah di Michigan telah ditabulasikan secara akurat dan aman.'
-d2 = Simplify(teks2)
+# bikin jadi kata dasar
+def Stem(x):
+    a = stemmer.stem(x)
+    return a
+    # bikin keluar "none"
 
-teks3 = "Ayah ibu adalah kakek"
-d3 = Simplify(teks3) 
+# ngilangin kata kata ga penting
+def Stopword(x):
+    factory = StopWordRemoverFactory()
+    stopword = factory.create_stop_word_remover()
+    a = stopword.remove(x)
+    return a
 
-# Querynya ntar terima inputan
-query = "Ayah"
-q = Simplify(query)
+# ngegabungin
+def Simplify(x):
+    a = Stopword(x)
+    b = Stem(a)
+    return b
 
-#Temuin kata-katanya
-D1 = vektor(d1)
-D2 = vektor(d2)
-D3 = vektor(d3)
-Q = vektor(q)
 
-#Term hasil concat dari kata-kata yang ada di dokumen sama query.
+#menghitung panjang array x
+def panjang(x):
+    n=0
+    for i in x:
+        n+=1
+    return n
+
+#fungsi vektor berfungsi untuk mengubah teks menjadi vektor kata
+def vektor(x):
+    list=[]
+    string=''
+    i=0
+    n=panjang(x)
+    while (i<n):
+        if x[i]!=' ':
+            string+=x[i]
+        else:
+            list.append(string)
+            string=''
+        if (i==n-1):
+            list.append(string)
+            string=''
+        i+=1
+    return list
+
+#fungsi basis sebagai vektor basis untuk membandingkan query dan dokumen
+def basis(x):
+    list=[]
+    i=0
+    while i<panjang(x):
+        j=0
+        if panjang(list)==0:
+            list.append(x[i])
+        found=False
+        while j<panjang(list):
+            if x[i]==list[j]:
+                found=True
+            j+=1
+        if found==False:
+            list.append(x[i])
+        i+=1
+    return list
+
+#Untuk menghitung jumlah elemen array
+
+def getElmtArray(x):
+    element=0
+    for i in x:
+        element= element+1
+    return element
+
+#Menjadikan vektor dari dokumen atau query
 
 def buatterm():
-    term = basis(D1 + D2 + D3 + Q)
+    term = basis(D1 + D2 + Q)
     return term
 
 def jadiinvektor(x): #Contoh x: D1, D2, query (yang sudah divektorbasiskan)
@@ -41,7 +98,3 @@ def jadiinvektor(x): #Contoh x: D1, D2, query (yang sudah divektorbasiskan)
                 frekuensi[i]=frekuensi[i]+1
     return frekuensi
 
-print(jadiinvektor(D1))
-print(jadiinvektor(D2))
-print(jadiinvektor(D3))
-print(jadiinvektor(Q))
