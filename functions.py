@@ -90,7 +90,7 @@ def getElmtArray(x):
 
 #Menjadikan vektor dari dokumen atau query
 
-def jadiinvektor(x): #Contoh x: D1v, D2v, qv
+def jadiinvektor(x): #Contoh x: D1, D2, query (yang sudah divektorbasiskan)
     global term
     #Inisialisasi vektor
     frekuensi = [0 for i in range (getElmtArray(term))]
