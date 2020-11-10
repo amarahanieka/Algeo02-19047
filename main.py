@@ -26,7 +26,20 @@ Q = vektor(q)
 
 #Term hasil concat dari kata-kata yang ada di dokumen sama query.
 
-term = basis(D1+D2+Q)
+def buatterm():
+    term = basis(D1 + D2 + Q)
+    return term
+
+def jadiinvektor(x): #Contoh x: D1, D2, query (yang sudah divektorbasiskan)
+    term = buatterm()
+    #Inisialisasi vektor
+    frekuensi = [0 for i in range (getElmtArray(term))]
+    #Inisialisasi vektor
+    for token in x:
+        for i in range (getElmtArray(term)):
+            if(token==term[i]):
+                frekuensi[i]=frekuensi[i]+1
+    return frekuensi
 
 print(jadiinvektor(D1))
 print(jadiinvektor(D2))
