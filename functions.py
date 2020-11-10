@@ -81,3 +81,14 @@ def getElmtArray(x):
         element= element+1
     return element
 
+#Buat vektor
+
+def jadiinvektor(x, term): #Contoh x: D1, D2, query (yang sudah divektorbasiskan)
+    #Inisialisasi vektor
+    frekuensi = [0 for i in range (getElmtArray(term))]
+    #Inisialisasi vektor
+    for token in x:
+        for i in range (getElmtArray(term)):
+            if(token==term[i]):
+                frekuensi[i]=frekuensi[i]+1
+    return frekuensi
