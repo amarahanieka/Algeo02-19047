@@ -27,7 +27,7 @@ Q = vektor(q)
 #Term hasil concat dari kata-kata yang ada di dokumen sama query.
 
 def buatterm():
-    term = basis(D1 + D2 + Q)
+    term = basis(D1 + D2 + D3 + Q)
     return term
 
 def jadiinvektor(x): #Contoh x: D1, D2, query (yang sudah divektorbasiskan)
