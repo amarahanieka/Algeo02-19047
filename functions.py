@@ -80,17 +80,43 @@ def basis(x):
         i+=1
     return list
 
-#Array frekuensi kata dalam suatu kalimat 
-#x adalah kalimat yang sudah di-simplify
+#Terima dokumen 1, ..... 15, terus query
+D1 = 'ke puncak gunung, tinggi'
+D2 = 'saingan Trump dari tinggi'
+query = 'tikus'
 
-def jadiinvektor(x):
-    vect2 = {}
-    for token in vektor(x):
-        if token in vect2:
-            vect2[token] += 1
-        else:
-            vect2[token] = 1
-    a = []
-    for i in vect2:
-        a += [vect2[i]]
-    print(a)
+# Dihapus dulu yang gapenting
+D1s = Simplify(D1)
+D2s = Simplify(D2)
+qs = Simplify(query)
+
+#Temuin kata-katanya
+D1v = basis(vektor(D1s))
+D2v = basis(vektor(D2s))
+qv = basis(vektor(qs))
+
+#Term hasil concat dari kata-kata yang ada di dokumen sama query.
+
+jadiinterm = D1v+D2v+qv
+
+#Untuk menghitung jumlah elemen array
+
+def getElmtArray(x):
+    element=0
+    for i in x:
+        element= element+1
+    return element
+
+#Menjadikan vektor dari dokumen atau query
+
+def jadiinvektor(x): #Contoh x: D1v, D2v, qv
+    global jadiinterm
+    #Inisialisasi vektor
+    frekuensi = [0 for i in range (getElmtArray(jadiinterm))]
+    #Inisialisasi vektor
+    for token in x:
+        for i in range (getElmtArray(jadiinterm)):
+            if(token==jadiinterm[i]):
+                frekuensi[i]=frekuensi[i]+1
+    return frekuensi
+
