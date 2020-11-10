@@ -12,10 +12,10 @@ teks2 = 'Saingan Trump dari Partai Demokrat, Joe Biden, telah menyegel kemenanga
 d2 = Simplify(teks2)
 
 teks3 = "Ayah ibu adalah kakek"
-d3 = Simplify(teks3) 
+d3 = Simplify(teks3)
 
 # Querynya ntar terima inputan
-query = "Ayah"
+query = str(input())
 q = Simplify(query)
 
 #Temuin kata-katanya
@@ -25,11 +25,13 @@ D3 = vektor(d3)
 Q = vektor(q)
 
 #Term hasil concat dari kata-kata yang ada di dokumen sama query.
-term = basis(D1 + D2 + D3 + Q)
-
+term = basis(Q + D1 + D2 + D3)
+D=[Q,D1,D2,D3]
+M=[]
+i=0
+while i < panjang(D):
+    M.append(jadiinvektor(D[i],term))
+    i+=1
 #Print vektor D1, D2, D3, dan Q
 
-print(jadiinvektor(D1,term))
-print(jadiinvektor(D2,term))
-print(jadiinvektor(D3,term))
-print(jadiinvektor(Q,term))
+print(M)
