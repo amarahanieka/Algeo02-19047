@@ -80,25 +80,6 @@ def basis(x):
         i+=1
     return list
 
-#Terima dokumen 1, ..... 15, terus query
-D1 = 'ke puncak gunung, tinggi'
-D2 = 'saingan Trump dari tinggi'
-query = 'tikus'
-
-# Dihapus dulu yang gapenting
-D1s = Simplify(D1)
-D2s = Simplify(D2)
-qs = Simplify(query)
-
-#Temuin kata-katanya
-D1v = basis(vektor(D1s))
-D2v = basis(vektor(D2s))
-qv = basis(vektor(qs))
-
-#Term hasil concat dari kata-kata yang ada di dokumen sama query.
-
-jadiinterm = D1v+D2v+qv
-
 #Untuk menghitung jumlah elemen array
 
 def getElmtArray(x):
@@ -110,13 +91,13 @@ def getElmtArray(x):
 #Menjadikan vektor dari dokumen atau query
 
 def jadiinvektor(x): #Contoh x: D1v, D2v, qv
-    global jadiinterm
+    global term
     #Inisialisasi vektor
-    frekuensi = [0 for i in range (getElmtArray(jadiinterm))]
+    frekuensi = [0 for i in range (getElmtArray(term))]
     #Inisialisasi vektor
     for token in x:
-        for i in range (getElmtArray(jadiinterm)):
-            if(token==jadiinterm[i]):
+        for i in range (getElmtArray(term)):
+            if(token==term[i]):
                 frekuensi[i]=frekuensi[i]+1
     return frekuensi
 
