@@ -87,3 +87,21 @@ def jadiinvektor(x, term): #Contoh x: D1, D2, query (yang sudah divektorbasiskan
             if(token==term[i]):
                 frekuensi[i]=frekuensi[i]+1
     return frekuensi
+
+
+def panjangvektor(x): #x: dokumen yang udah dijadiin vektor
+    sumofSquares=0
+    for i in x:
+        sumofSquares = sumofSquares + (i**2)
+    return (sumofSquares)**(1/2)
+
+
+def dotProduct(x, query): #x : dokumen yang udah dijadiinvektor
+    dotprod = 0
+    for i in range (getElmtArray(x)):
+        dotprod = dotprod + query[i]*x[i]
+    return dotprod
+
+def similarity(x, query): #x: dokumen yang udah dijadiinvektor
+    sim = dotProduct(x,query)/(panjangvektor(x)*panjangvektor(query))
+    return sim
