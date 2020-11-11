@@ -28,10 +28,29 @@ Q = vektor(q)
 term = basis(Q + D1 + D2 + D3)
 D=[Q,D1,D2,D3]
 M=[]
-i=0
+i=1
 while i < panjang(D):
     M.append(jadiinvektor(D[i],term))
     i+=1
-#Print vektor D1, D2, D3, dan Q
+
+Query=jadiinvektor(Q,term)
 
 print(M)
+
+for i in range (panjang(M)):
+    print(similarity(M[i],Query))
+
+#Kumpulan array teksnya supaya nanti bisa dikeluarin
+K = [teks1, teks2, teks3]
+
+#Definisiin kamusnya, supaya vektor itu selalu berpasangan sama teks
+dict=dictionary(K,M,Query)
+
+#Sorting berdasarkan similarity
+M=sort(M,Query)
+
+#Print berurut yang paling similar
+for i in range (panjang(M)):
+    for key in K:
+        if(dict[key]==M[i]):
+            print(key)
