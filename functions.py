@@ -98,10 +98,41 @@ def panjangvektor(x): #x: dokumen yang udah dijadiin vektor
 
 def dotProduct(x, query): #x : dokumen yang udah dijadiinvektor
     dotprod = 0
-    for i in range (getElmtArray(x)):
+    for i in range (panjang(x)):
         dotprod = dotprod + query[i]*x[i]
     return dotprod
 
 def similarity(x, query): #x: dokumen yang udah dijadiinvektor
     sim = dotProduct(x,query)/(panjangvektor(x)*panjangvektor(query))
     return sim
+
+#Buat array urutan similarity
+def arraysimilarity(M,query):
+    maxsim = []
+    for i in range (panjang(M)):
+        maxsim.append(similarity(M[i],query))
+    sortedarr = sorted(maxsim)
+    return sortedarr
+
+#Ngesort berdasarkan similarity
+def sort(M,Query):
+    i = 0
+    while(i<panjang(M)):
+        j=i+1
+        while(j<panjang(M)):
+            if(similarity(M[i],Query)<similarity(M[j],Query)):
+                temp=M[i]
+                M[i]=M[j]
+                M[j]=temp
+            j=j+1
+        i=i+1
+    return M
+
+#Bikin dictionary buat nyimpen kalimat dari M itu
+def dictionary(K,M,Query):
+    dict = {}
+    i=0
+    for key in K:
+        dict[key] = M[i]
+        i=i+1
+    return dict
