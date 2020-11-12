@@ -32,6 +32,8 @@ i=1
 while i < panjang(D):
     M.append(jadiinvektor(D[i],term))
     i+=1
+    
+ 
 
 Query=jadiinvektor(Q,term)
 
@@ -54,3 +56,12 @@ for i in range (panjang(M)):
     for key in K:
         if(dict[key]==M[i]):
             print(key)
+            
+#Array yang udah terurut, kalimat-kalimatnya, mungkin buat dijadiin tabel di flask
+z=[]
+for i in range (panjang(M)):
+    for key in K:
+        if(dict[key]==M[i]):
+            z.append(key)
+
+
