@@ -136,3 +136,23 @@ def title(K,titleteks):
         dict[key] = titleteks[i]
         i = i + 1
     return dict
+
+#list penyimpanan data
+file=["filetxt/txt1.txt","filetxt/txt2.txt","filetxt/txt3.txt","filetxt/txt4.txt","filetxt/txt5.txt","filetxt/txt6.txt","filetxt/txt7.txt","filetxt/txt8.txt","filetxt/txt9.txt","filetxt/txt10.txt","filetxt/txt11.txt","filetxt/txt12.txt","filetxt/txt13.txt","filetxt/txt14.txt","filetxt/txt15.txt"]
+judulfile=[0 for i in range(panjang(file))]
+teks=[0 for i in range(panjang(file))]
+sim=[0 for i in range(panjang(file))]
+K=[0 for i in range(panjang(file))]
+
+#pengisian list
+for i in range(panjang(file)):
+    openfile=open(file[i],"r")
+    read=openfile.readline()
+    judulfile[i]=read
+for i in range(panjang(file)):
+    openfile=open(file[i],"r")
+    readfile=openfile.read()
+    K[i]=readfile
+    d=Simplify(readfile)
+    v=vektor(d)
+    teks[i]=v
