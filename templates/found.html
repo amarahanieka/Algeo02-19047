@@ -6,6 +6,17 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
+    <center><form method="post" action="/" enctype="multipart/form-data">
+        <dl>
+            <p>
+                <input type="file" name="files[]" multiple="true" autocomplete="off" required>
+            </p>
+        </dl>
+        <p>
+            <input type="submit" value="Submit">
+        </p>
+    </form></center>
+
     <body>
         <div class="container">
         <center><h2>Search engine broooooo</h2>
@@ -64,7 +75,7 @@
         {% endfor %}
         </table>
     </body>
-    
+
 </html>
 
 
