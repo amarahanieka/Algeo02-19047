@@ -3,7 +3,6 @@ from Sastrawi.Stemmer.StemmerFactory import StemmerFactory
 # import StopWordRemoverFactory class
 # import Sastrawi package
 from Sastrawi.StopWordRemover.StopWordRemoverFactory import StopWordRemoverFactory
-# import buat count vectorizer aokwokwokw
 
 
 # create stemmer
@@ -106,14 +105,6 @@ def similarity(x, query): #x: dokumen yang udah dijadiinvektor
     sim = dotProduct(x,query)/(panjangvektor(x)*panjangvektor(query))
     return sim
 
-#Buat array urutan similarity
-def arraysimilarity(M,query):
-    maxsim = []
-    for i in range (panjang(M)):
-        maxsim.append(similarity(M[i],query))
-    sortedarr = sorted(maxsim)
-    return sortedarr
-
 #Ngesort berdasarkan similarity
 def sort(M,Query):
     i = 0
@@ -135,4 +126,13 @@ def dictionary(K,M,Query):
     for key in K:
         dict[key] = M[i]
         i=i+1
+    return dict
+
+    # Kamus yang lain lagi, isinya title
+def title(K,titleteks):
+    dict = {}
+    i = 0
+    for key in K:
+        dict[key] = titleteks[i]
+        i = i + 1
     return dict
