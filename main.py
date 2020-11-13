@@ -1,18 +1,23 @@
 from functions import *
 
 
-#file1 = open("testcase.txt", "r")
-#teks1 = file1.read()
-teks1 = 'naik-naik ke puncak gunung,naik delman, si kancil anak nakal, pamanku dari desa, topi saya bundar, burung kaktua, anak gembala, cangkul-cangkul, abang tukang bakso, hujan rintik-rintik, ibu dan ayah. cicak di dinding, naik kereta api. bintang kecil.  diambil 10 lagu dan di bentuk kelompok'
+file1 = open("filetxt/txt1.txt", "r")
+judul1 = file1.readline()
+teks1 = file1.read()
 d1 = Simplify(teks1)
 
-#file2 = open("contoh1.txt", "r")
-#teks2 = file2.read()
-teks2 = 'Saingan Trump dari Partai Demokrat, Joe Biden, telah menyegel kemenangan di negara bagian Michigan, demikian menurut laporan Associated Press dan media-media AS lainnya. Dengan demikian, Biden hanya butuh 6 suara elektoral lagi untuk mencapai 270 suara elektoral, total suara yang disyaratkan bagi kandidat untuk melenggang ke Gedung Putih. Sementara itu, di luar TCF Center, yang menjadi lokasi penghitungan surat suara di Detroit, Michigan, pendukung Trump meminta penghitungan suara dihentikan. Hentikan penghitungan teriak para pendukung Trump berulang-ulang. Sekretaris Negara Michigan Jocelyn Benson menyebut gugatan hukum kubu Trump untuk mengakhiri penghitungan suara di negara bagian itu sebagai langkah sembrono, demikian menurut Reuters. Dia kemudian memberikan jaminan bahwa semua surat suara yang sah di Michigan telah ditabulasikan secara akurat dan aman.'
+file2 = open("filetxt/txt2.txt", "r")
+judul2 = file2.readline()
+teks2 = file2.read()
 d2 = Simplify(teks2)
 
-teks3 = "Ayah ibu adalah kakek"
+file3 = open("filetxt/txt3.txt", "r")
+judul3 = file3.readline()
+teks3 = file3.read()
 d3 = Simplify(teks3)
+
+#buat judul
+judulteks = [judul1, judul2, judul3]
 
 # Querynya ntar terima inputan
 query = str(input())
@@ -32,21 +37,20 @@ i=1
 while i < panjang(D):
     M.append(jadiinvektor(D[i],term))
     i+=1
-    
- 
 
 Query=jadiinvektor(Q,term)
 
-print(M)
+#print(M)
 
-for i in range (panjang(M)):
-    print(similarity(M[i],Query))
+#for i in range (panjang(M)):
+#    print(similarity(M[i],Query))
 
 #Kumpulan array teksnya supaya nanti bisa dikeluarin
 K = [teks1, teks2, teks3]
 
 #Definisiin kamusnya, supaya vektor itu selalu berpasangan sama teks
 dict=dictionary(K,M,Query)
+judul = title(K, judulteks)
 
 #Sorting berdasarkan similarity
 M=sort(M,Query)
@@ -55,7 +59,9 @@ M=sort(M,Query)
 for i in range (panjang(M)):
     for key in K:
         if(dict[key]==M[i]):
-            print(key)
+            print(similarity(M[i],Query))
+            print(judul[key])
+
             
 #Array yang udah terurut, kalimat-kalimatnya, mungkin buat dijadiin tabel di flask
 z=[]
@@ -63,5 +69,3 @@ for i in range (panjang(M)):
     for key in K:
         if(dict[key]==M[i]):
             z.append(key)
-
-
