@@ -6,7 +6,6 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
-    <center><a href="/nyoba/">pencet sini coba rhe, trus liat line 30 di app.py</a></center>
     <body>
         <div class="container">
         <center><h2>Search engine broooooo</h2>
@@ -40,26 +39,32 @@
 
         </div>
     </body> </center>
+
+    <br>
+    <br>
+
+    <head>
+        <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        </style>
+    </head>
+    <body>
+        <table align = center>
+        {% for i in data %}
+          <tr>
+              {% if i=="Partai Demokrat"%}
+              <td><a href=/nyoba/>{{i}}</a></td>
+              {% else %}
+              <td>{{i}}</td>
+              {% endif %}
+          </tr>
+        {% endfor %}
+        </table>
+    </body>
+    
 </html>
 
-<head>
-<style>
-table, th, td {
-  border: 1px solid black;
-  border-collapse: collapse;
-}
-</style>
-</head>
-<body>
 
-<table>
-{% for i in data %}
-  <tr>
-      {% if i=="Saingan Trump"%}
-      <td><a href=/nyoba/>{{i}}</a></td>
-      {% else %}
-      <td>{{i}}</td>
-      {% endif %}
-  </tr>
-{% endfor %}
-</table>
