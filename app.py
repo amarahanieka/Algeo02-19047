@@ -87,6 +87,8 @@ class ReusableForm(Form):
                 # Definisiin kamusnya, supaya vektor itu selalu berpasangan sama teks
                 dict = dictionary(K, M, Query)
                 judul = title(K, judulfile)
+                kalimat = firstline(K, kalimatpertama)
+                jumlahkata = hitungkata(K)
 
                 # Sorting berdasarkan similarity
                 M = sort(M, Query)
@@ -97,6 +99,12 @@ class ReusableForm(Form):
                     for key in K:
                         if (dict[key] == M[i] and similarity(M[i], Query)) > 0:
                             data.append(judul[key])
+
+                #Buat ngeluarin si similarity
+
+                #Array baru yang nge-store similarity sama kalimat
+                dictsimkal = similar(data,kalimat, Query,dict,K,judul,jumlahkata)
+
                 base = basis(Q)
                 judultabel = ["Term", "Query", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11",
                               "D12", "D13", "D14", "D15"]
@@ -118,7 +126,7 @@ class ReusableForm(Form):
                     for j in range(panjang(teks)):
                         termTable[i + 1][j + 2] = TransposeNewM[i][j]
                 if (panjang(data) != 0):
-                    return render_template("found.html", data=data, form=form, termTable=termTable)
+                    return render_template("found.html", form=form, termTable=termTable, dictsimkal=dictsimkal)
                 else:
                     return render_template('notfound.html', form=form)
             else:
