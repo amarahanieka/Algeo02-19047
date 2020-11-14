@@ -128,7 +128,7 @@ def dictionary(K,M,Query):
         i=i+1
     return dict
 
-    # Kamus yang lain lagi, isinya title
+# Kamus yang lain lagi, isinya title
 def title(K,titleteks):
     dict = {}
     i = 0
@@ -137,9 +137,40 @@ def title(K,titleteks):
         i = i + 1
     return dict
 
+
+#Dictionary baru buat kalimat pertama
+
+def firstline(K,kalimatpertama):
+    dict = {}
+    i = 0
+    for key in K:
+        dict[key] = kalimatpertama[i]
+        i = i + 1
+    return dict
+
+def hitungkata(K):
+    dict={}
+    for key in K:
+        kata = key.split(" ")
+        dict[key] = len(kata)
+    return dict
+
+def similar(data,kalimat, Query,dict,K,judul,jumlahkata):
+    dictsimkal={}
+    for key in data:
+        for j in K:
+            if (key==judul[j]):
+                dictsimkal[key] = [jumlahkata[j],similarity(dict[j],Query)*100, kalimat[j]]
+    return dictsimkal
+
+# ngitung jumlah kata dalam dokumen termasuk judulnya
+# x itu kek readfile di baris 154
+
+
 #list penyimpanan data
 file=["filetxt/txt1.txt","filetxt/txt2.txt","filetxt/txt3.txt","filetxt/txt4.txt","filetxt/txt5.txt","filetxt/txt6.txt","filetxt/txt7.txt","filetxt/txt8.txt","filetxt/txt9.txt","filetxt/txt10.txt","filetxt/txt11.txt","filetxt/txt12.txt","filetxt/txt13.txt","filetxt/txt14.txt","filetxt/txt15.txt"]
 judulfile=[0 for i in range(panjang(file))]
+kalimatpertama=[0 for i in range (panjang(file))]
 teks=[0 for i in range(panjang(file))]
 sim=[0 for i in range(panjang(file))]
 K=[0 for i in range(panjang(file))]
@@ -149,6 +180,8 @@ for i in range(panjang(file)):
     openfile=open(file[i],"r")
     read=openfile.readline()
     judulfile[i]=read
+    readlagi=openfile.readline()
+    kalimatpertama[i]=readlagi
 for i in range(panjang(file)):
     openfile=open(file[i],"r")
     readfile=openfile.read()
@@ -156,3 +189,4 @@ for i in range(panjang(file)):
     d=Simplify(readfile)
     v=vektor(d)
     teks[i]=v
+
