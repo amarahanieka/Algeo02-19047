@@ -76,6 +76,25 @@
         </table>
     </body>
 
+
+<head>
+        <style>
+        table, th, td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+        </style>
+    </head>
+    <body>
+        <table align = center>
+        {% for i in termTable %}
+          <tr>
+              {% for j in i %}
+              <td>{{j}}</td>
+              {% endfor %}
+          </tr>
+        {% endfor %}
+        </table>
+    </body>
+
 </html>
-
-
