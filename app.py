@@ -97,8 +97,28 @@ class ReusableForm(Form):
                     for key in K:
                         if (dict[key] == M[i] and similarity(M[i], Query)) > 0:
                             data.append(judul[key])
+                base = basis(Q)
+                judultabel = ["Term", "Query", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11",
+                              "D12", "D13", "D14", "D15"]
+                termTable = [[0 for i in range(panjang(judultabel))] for j in range(panjang(base) + 1)]
+                termTable[0] = judultabel
+                for i in range(panjang(base)):
+                    termTable[i + 1][0] = base[i]
+                NewQuery = jadiinvektor(Q, base)
+                for i in range(panjang(base)):
+                    termTable[i + 1][1] = NewQuery[i]
+                NewM = []
+                for i in range(panjang(teks)):
+                    NewM.append(jadiinvektor(teks[i], base))
+                TransposeNewM = [[0 for i in range(panjang(teks))] for j in range(panjang(base))]
+                for i in range(panjang(base)):
+                    for j in range(panjang(teks)):
+                        TransposeNewM[i][j] = NewM[j][i]
+                for i in range(panjang(base)):
+                    for j in range(panjang(teks)):
+                        termTable[i + 1][j + 2] = TransposeNewM[i][j]
                 if (panjang(data) != 0):
-                    return render_template("found.html", data=data, form=form)
+                    return render_template("found.html", data=data, form=form, termTable=termTable)
                 else:
                     return render_template('notfound.html', form=form)
             else:
