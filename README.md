@@ -45,6 +45,7 @@ Program telah selesai dibuat dan akan dikembangkan jika memang diperlukan.
 
 ## Inspirasi
 “Aplikasi Dot Product pada sistem temu balik aplikasi” by Rinaldi Munir
+https://informatika.stei.itb.ac.id/~rinaldi.munir/AljabarGeometri/2020-2021/Algeo-12-Aplikasi-dot-product-pada-IR.pdf
 
 
 ## Kontak
