@@ -3,6 +3,7 @@ from wtforms import Form, TextField, TextAreaField, validators, StringField, Sub
 from functions import *
 from werkzeug.utils import secure_filename
 import os
+from flask_bootstrap import Bootstrap
 
 # App config.
 DEBUG = True
@@ -10,7 +11,10 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
+
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
+
+bootstrap = Bootstrap(app)
 
 # Get current path
 path = os.getcwd()
@@ -30,11 +34,9 @@ ALLOWED_EXTENSIONS = set(['txt'])
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
-
 @app.route('/')
 def upload_form():
     return render_template('upload.html')
-
 
 @app.route('/', methods=['POST'])
 def upload_file():
@@ -90,7 +92,7 @@ class ReusableForm(Form):
                 judul = title(K, judulfile)
                 kalimat = firstline(K, kalimatpertama)
                 jumlahkata = hitungkata(K)
-                linkfile = fileteks(K, file)
+                linkfile = fileteks(K,file)
 
                 # Sorting berdasarkan similarity
                 M = sort(M, Query)
@@ -102,13 +104,13 @@ class ReusableForm(Form):
                         if (dict[key] == M[i] and similarity(M[i], Query)) > 0:
                             data.append(judul[key])
 
-                # Buat ngeluarin si similarity
+                #Buat ngeluarin si similarity
 
-                # Array baru yang nge-store similarity sama kalimat
+                #Array baru yang nge-store similarity sama kalimat
                 sim = similar(data, Query, dict, K, judul)
                 kal = kalper(data, kalimat, K, judul)
                 li = link(data, linkfile, K, judul)
-                jum = jumlah(data, K, judul, jumlahkata)
+                jum = jumlah(data,K,judul,jumlahkata)
                 base = basis(Q)
                 judultabel = ["Term", "Query", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11",
                               "D12", "D13", "D14", "D15"]
@@ -130,8 +132,7 @@ class ReusableForm(Form):
                     for j in range(panjang(teks)):
                         termTable[i + 1][j + 2] = TransposeNewM[i][j]
                 if (panjang(data) != 0):
-                    return render_template("found.html", form=form, termTable=termTable, data=data, sim=sim, kal=kal,
-                                           li=li, jum=jum)
+                    return render_template("found.html", form=form, termTable=termTable, data=data,sim=sim,kal=kal,li=li,jum=jum)
                 else:
                     return render_template('notfound.html', form=form)
             else:
@@ -139,6 +140,11 @@ class ReusableForm(Form):
         else:
             flash('Anda tidak memasukkan query apapun.')
             return render_template('hello.html', form=form)
+
+
+@app.route('/perihal/')
+def perihal():
+    return render_template("index2.html")    
 
 @app.route('/filetxt/txt1.txt/')
 def a():
@@ -231,4 +237,4 @@ def o():
     return render_template("newtext.html", content=content)
 
 if __name__ == "__main__":
-    app.run()
+    app.run(threaded=True)
