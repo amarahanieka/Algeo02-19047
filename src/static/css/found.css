@@ -1,0 +1,13 @@
+.alert {
+   width:40%;    
+}
+
+tr.spaceUnder>td {
+    padding-bottom: 1em;
+  }
+
+#footer {
+   position: absolute;
+   bottom: 0;
+   width=100%;
+}
