@@ -1,40 +1,32 @@
 <html>
     <head>
         <title> Search Engine </title>
-        <link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
-        <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+        <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="static/css/found.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
+    <br><br>
     <center><form method="post" action="/" enctype="multipart/form-data">
-        <dl>
+        <div class="row align-items-center justify-content-center input-group">
             <p>
                 <input type="file" name="files[]" multiple="true" autocomplete="off" required>
             </p>
-        </dl>
         <p>
             <input type="submit" value="Submit">
         </p>
+        </div>
     </form></center>
 
     <body>
-        <div class="container">
-        <center><h2>Search engine broooooo</h2>
-        <form action="" method="post" role="form">
-            {{ form.csrf }}
-            <div class="form-group">
-            <center>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan query anda">
-                <button type="submit" class="btn btn-success">Cari</button>
-            </center>
-            </div>
-        </form>
+        <div class="container" align=center>
 
-        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% with messages = get_flashed_messages(with_categories=true) %}
             {% if messages %}
                 {% for message in messages %}
                     {% if "Error" not in message[1]: %}
-                        <div class="alert alert-info">
+                        <div class="alert alert-info" width=50px>
                         <strong>Success! </strong> {{ message[1] }}</div>
 
 
@@ -48,6 +40,17 @@
             {% endif %}
         {% endwith %}
 
+        <center><h2>Search Engine</h2>
+        <form action="" method="post" role="form">
+            {{ form.csrf }}
+            <div class="row align-items-center justify-content-center ">
+                <div class="form-inline">
+                <center>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan query anda" size="75">
+                    <button type="submit" class="btn btn-success">Cari</button>
+                </center>
+                </div></div>
+        </form>
         </div>
     </body> </center>
 
@@ -56,44 +59,39 @@
 
     <head>
         <style>
-        table, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
+        #tabeljawaban {
+            border-collapse: collapse;
+            width: 75%;
+            border: 1px solid white;
         }
         </style>
     </head>
-    <body>
-        <table align = center>
-        {% for key in data %}
-          <tr>
-              <tr>
-            <th><a href=/{{li[key]}}/>{{ key }}</a></th>
-              </tr>
-              <tr>
-                  <td> Jumlah kata: {{ jum[key] }} </td>
-              </tr>
-              <tr>
-                  <td> Tingkat kemiripan: {{ sim[key] }} % </td>
-              </tr>
-              <tr>
-                  <td> {{ kal[key] }} </td>
-              </tr>
-          </tr>
-        {% endfor %}
-        </table>
-    </body>
 
+            <body>
+                <table align=center id="tabeljawaban">
+                {% for key in data %}
+                    <tr>
+                        <tr>
+                            <th><a href=/{{li[key]}}/>{{ key }}</a></th>
+                        </tr>
+                        <tr>
+                            <td> Jumlah kata: {{ jum[key] }} </td>
+                        </tr>
+                        <tr>
+                            <td> Tingkat kemiripan: {{ sim[key] }} % </td>
+                        </tr>
+                        <tr class="spaceUnder">
+                            <td> {{kal[key]}} </td>
+                        </tr>
+                    </tr>
+                {% endfor %}
+                </table>
+            </body>
 
-<head>
-        <style>
-        table, th, td {
-          border: 1px solid black;
-          border-collapse: collapse;
-        }
-        </style>
-    </head>
+    <br><br>
+
     <body>
-        <table align = center>
+        <table align = center border=1>
         {% for i in termTable %}
           <tr>
               {% for j in i %}
@@ -103,5 +101,8 @@
         {% endfor %}
         </table>
     </body>
+
+    <br><br><br>
+    <center><a href="../perihal">Perihal</a></center>
 
 </html>

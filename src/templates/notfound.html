@@ -1,33 +1,37 @@
 <html>
     <head>
         <title> Search Engine </title>
-        <link rel="stylesheet" media="screen" href="static/bootstrap.min.css">
-        <link rel="stylesheet" href="static/bootstrap-theme.min.css">
+        <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css">
+        <link rel="stylesheet" href="static/css/found.css">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
     </head>
 
+    <br><br>
+
     <center><form method="post" action="/" enctype="multipart/form-data">
-        <dl>
+        <div class="row align-items-center justify-content-center input-group">
             <p>
                 <input type="file" name="files[]" multiple="true" autocomplete="off" required>
             </p>
-        </dl>
         <p>
             <input type="submit" value="Submit">
         </p>
+        </div>
     </form></center>
     
     <body>
         <div class="container">
-        <center><h2>Search engine broooooo</h2>
+        <center><h2>Search Engine</h2>
         <form action="" method="post" role="form">
             {{ form.csrf }}
-            <div class="form-group">
-            <center>
-                <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan query anda">
-                <button type="submit" class="btn btn-success">Cari</button>
-            </center>
-            </div>
+            <div class="row align-items-center justify-content-center">
+                <div class="form-inline">
+                <center>
+                    <input type="text" class="form-control" id="name" name="name" placeholder="Masukkan query anda" size="75">
+                    <button type="submit" class="btn btn-success">Cari</button>
+                </center>
+                </div></div>
         </form>
 
         {% with messages = get_flashed_messages(with_categories=true) %}
@@ -50,5 +54,8 @@
 
         </div>
     </body> </center>
+
+    <br><br><br>
+    <center><a href="../perihal">Perihal</a></center>
 
 </html>
