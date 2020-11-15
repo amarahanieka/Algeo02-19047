@@ -1,49 +1,56 @@
-# Project Name
-> Here goes your awesome project description!
+# Mesin Pencarian
+> Program ini adalah aplikasi dari Dot Product pada Sistem Temu-balik Informasi yang telah dipelajari di kuliah IF2123 Aljabar Linier dan Geometri.
 
-## Table of contents
-* [General info](#general-info)
+## Daftar Isi
+* [Informasi Umum](#informasi-umum)
 * [Screenshots](#screenshots)
-* [Technologies](#technologies)
-* [Setup](#setup)
-* [Features](#features)
+* [Pengaturan](#pengaturan)
+* [Fitur](#fitur)
 * [Status](#status)
-* [Inspiration](#inspiration)
-* [Contact](#contact)
+* [Inspirasi](#inspirasi)
+* [Kontak](#kontak)
 
-## General info
-Add more general information about project. What the purpose of the project is? Motivation?
+## Informasi Umum
+Program ini dibuat dalam rangka menyelesaikan tugas besar kuliah IF2123 Aljabar Linier dan Geometri. Pada program ini kami menggunakan bahasa pemrograman python dan menggunakan frontend flask. Program ini bekerja dengan menerima input pengguna lalu akan menampilkan beberapa dokumen serta menunjukkan persentase kesamaan dokumen dengan kata yang ingin kita temukan. Program ini memanfaatkan dot product dalam algoritme pemrogramannya dengan persamaan similarity=(Query●Dokumen)/(||Query|| ||Dokumen||)
 
 ## Screenshots
 ![Example screenshot](./img/screenshot.png)
 
-## Technologies
-* Tech 1 - version 1.0
-* Tech 2 - version 2.0
-* Tech 3 - version 3.0
+## Pengaturan dan installasi
+* Pastikan python3(versi yang direkomendasikan) sudah terinstall di PC anda.
+* Install bbrp modul berikut jika belum anda install sebelumnya
+* * flask_bootstrap
+* * wtforms
+* * werkzeug
+* * sastrawi
+* setelah semua modul terintstall jangan lupa memindahkan file dari github ini ke lokal lalu buka terminal dan pindahkan direktori file ke file penyimpanan yang anda gunakan sebelumnya.
+* jalankan kode app.py di terminal(jika menggunakan python versi lain silakan menyesuaikan) dengan command python3 app.py  lalu tekan enter dan tunggu beberapa saat.
+* setelah muncul command seperti gambar diatas klik kanan pada mouse dan pilih open link pada tulisan http://127.0.0.1:5000/
+* anda akan diarahkan ke website lokal tersebut lalu pada bagian http://127.0.0.1:5000/ tambahkan kata search sehingga menjadi http://127.0.0.1:5000/search kemudian load halaman tersebut.
+* program siap dijalankan dengan memasukkan kata kunci dari dokumen yang ingin anda cari seperti pada search engine umumnya (google,yahoo,dll). 
+* Jika ingin membuka dokumen Anda hanya perlu mengklik judul yang muncul setelah Anda memasukkan kata kunci di mesin pencarian.
+* pada bagian kiri bawah terdapat perihal yang terhubung ke halaman tentang program dan pembuatnya.
 
-## Setup
-Describe how to install / setup your local environement / add link to demo version.
-
-## Code Examples
+## contoh kode 
 Show examples of usage:
 `put-your-code-here`
 
-## Features
-List of features ready and TODOs for future development
-* Awesome feature 1
-* Awesome feature 2
-* Awesome feature 3
-
-To-do list:
-* Wow improvement to be done 1
-* Wow improvement to be done 2
+## Fitur
+Beberapa fitur yang perlu dikembangkan
+* Fitur Upload
+* Mengambil teks dari Internet
 
 ## Status
-Project is: _in progress_, _finished_, _no longer continue_ and why?
+Program telah selesai dibuat dan akan dikembangkan jika memang diperlukan.
 
-## Inspiration
-Add here credits. Project inspired by..., based on...
+## Inspirasi
+“Aplikasi Dot Product pada sistem temu balik aplikasi” by Rinaldi Munir
 
-## Contact
-Created by [@flynerdpl](https://www.flynerd.pl/) - feel free to contact me!
+
+## Kontak
+Dibuat oleh Kelompok 38 ( Rhea Elka Pannndumpi, Michael Owen, Jeanne D’Arc Amara Hanieka )
+Kontak yang dapat dihubungi :
+* E-mail : 13519082
+* No HP : +6281280403538
+
+
