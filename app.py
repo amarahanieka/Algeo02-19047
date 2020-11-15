@@ -10,7 +10,6 @@ app = Flask(__name__)
 app.config.from_object(__name__)
 app.config['SECRET_KEY'] = '7d441f27d441f27567d441f2b6176a'
 
-
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024
 
 # Get current path
@@ -31,9 +30,11 @@ ALLOWED_EXTENSIONS = set(['txt'])
 def allowed_file(filename):
     return '.' in filename and filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
+
 @app.route('/')
 def upload_form():
     return render_template('upload.html')
+
 
 @app.route('/', methods=['POST'])
 def upload_file():
@@ -89,7 +90,7 @@ class ReusableForm(Form):
                 judul = title(K, judulfile)
                 kalimat = firstline(K, kalimatpertama)
                 jumlahkata = hitungkata(K)
-                linkfile = fileteks(K,file)
+                linkfile = fileteks(K, file)
 
                 # Sorting berdasarkan similarity
                 M = sort(M, Query)
@@ -101,13 +102,13 @@ class ReusableForm(Form):
                         if (dict[key] == M[i] and similarity(M[i], Query)) > 0:
                             data.append(judul[key])
 
-                #Buat ngeluarin si similarity
+                # Buat ngeluarin si similarity
 
-                #Array baru yang nge-store similarity sama kalimat
+                # Array baru yang nge-store similarity sama kalimat
                 sim = similar(data, Query, dict, K, judul)
                 kal = kalper(data, kalimat, K, judul)
                 li = link(data, linkfile, K, judul)
-                jum = jumlah(data,K,judul,jumlahkata)
+                jum = jumlah(data, K, judul, jumlahkata)
                 base = basis(Q)
                 judultabel = ["Term", "Query", "D1", "D2", "D3", "D4", "D5", "D6", "D7", "D8", "D9", "D10", "D11",
                               "D12", "D13", "D14", "D15"]
@@ -129,7 +130,8 @@ class ReusableForm(Form):
                     for j in range(panjang(teks)):
                         termTable[i + 1][j + 2] = TransposeNewM[i][j]
                 if (panjang(data) != 0):
-                    return render_template("found.html", form=form, termTable=termTable, data=data,sim=sim,kal=kal,li=li,jum=jum)
+                    return render_template("found.html", form=form, termTable=termTable, data=data, sim=sim, kal=kal,
+                                           li=li, jum=jum)
                 else:
                     return render_template('notfound.html', form=form)
             else:
@@ -138,9 +140,95 @@ class ReusableForm(Form):
             flash('Anda tidak memasukkan query apapun.')
             return render_template('hello.html', form=form)
 
-@app.route('/nyoba/')
-def search():
-    return render_template("newtext.html")
+@app.route('/filetxt/txt1.txt/')
+def a():
+    with open('filetxt/txt1.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt2.txt/')
+def b():
+    with open('filetxt/txt2.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt3.txt/')
+def c():
+    with open('filetxt/txt3.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt4.txt/')
+def d():
+    with open('filetxt/txt4.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt5.txt/')
+def e():
+    with open('filetxt/txt5.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt6.txt/')
+def f():
+    with open('filetxt/txt6.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt7.txt/')
+def g():
+    with open('filetxt/txt7.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt8.txt/')
+def h():
+    with open('filetxt/txt8.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt9.txt/')
+def i():
+    with open('filetxt/txt9.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt10.txt/')
+def j():
+    with open('filetxt/txt10.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt11.txt/')
+def k():
+    with open('filetxt/txt11.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt12.txt/')
+def l():
+    with open('filetxt/txt12.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt13.txt/')
+def m():
+    with open('filetxt/txt13.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt14.txt/')
+def n():
+    with open('filetxt/txt14.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
+
+@app.route('/filetxt/txt15.txt/')
+def o():
+    with open('filetxt/txt15.txt', "r") as f:
+        content = f.read()
+    return render_template("newtext.html", content=content)
 
 if __name__ == "__main__":
     app.run()
