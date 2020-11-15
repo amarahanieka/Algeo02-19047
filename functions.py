@@ -128,6 +128,15 @@ def dictionary(K,M,Query):
         i=i+1
     return dict
 
+#Bikin dictionary buat nyimpen nama file dari kalimat itu
+def fileteks(K,file):
+    dict={}
+    i=0
+    for key in K:
+        dict[key]=file[i]
+        i=i+1
+    return dict
+
 # Kamus yang lain lagi, isinya title
 def title(K,titleteks):
     dict = {}
@@ -136,7 +145,6 @@ def title(K,titleteks):
         dict[key] = titleteks[i]
         i = i + 1
     return dict
-
 
 #Dictionary baru buat kalimat pertama
 
@@ -155,13 +163,37 @@ def hitungkata(K):
         dict[key] = len(kata)
     return dict
 
-def similar(data,kalimat, Query,dict,K,judul,jumlahkata):
-    dictsimkal={}
+def similar(data,Query,dict,K,judul):
+    sim={}
     for key in data:
         for j in K:
             if (key==judul[j]):
-                dictsimkal[key] = [jumlahkata[j],similarity(dict[j],Query)*100, kalimat[j]]
-    return dictsimkal
+                sim[key]=similarity(dict[j],Query)*100
+    return sim
+
+def kalper(data,kalimat,K,judul):
+    kal={}
+    for key in data:
+        for j in K:
+            if (key==judul[j]):
+                kal[key]=kalimat[j]
+    return kal
+
+def jumlah(data,K,judul,jumlahkata):
+    jum={}
+    for key in data:
+        for j in K:
+            if(key==judul[j]):
+                jum[key]=jumlahkata[j]
+    return jum
+
+def link(data,linkfile,K,judul):
+    li={}
+    for key in data:
+        for j in K:
+            if (key==judul[j]):
+                li[key]=linkfile[j]
+    return li
 
 # ngitung jumlah kata dalam dokumen termasuk judulnya
 # x itu kek readfile di baris 154
