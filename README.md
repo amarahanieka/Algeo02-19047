@@ -14,7 +14,7 @@
 Program ini dibuat dalam rangka menyelesaikan tugas besar kuliah IF2123 Aljabar Linier dan Geometri. Pada program ini kami menggunakan bahasa pemrograman python dan menggunakan frontend flask. Program ini bekerja dengan menerima input pengguna lalu akan menampilkan beberapa dokumen serta menunjukkan persentase kesamaan dokumen dengan kata yang ingin kita temukan. Program ini memanfaatkan dot product dalam algoritme pemrogramannya dengan persamaan similarity=(Query●Dokumen)/(||Query|| ||Dokumen||)
 
 ## Screenshots
-![Example screenshot](./img/screenshot.png)
+![Example screenshot](./Screenshots/Screenshot from 2020-11-16 00-14-59.png)
 
 ## Pengaturan dan installasi
 * Pastikan python3(versi yang direkomendasikan) sudah terinstall di PC anda.
