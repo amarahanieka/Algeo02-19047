@@ -74,6 +74,10 @@ Program telah selesai dibuat dan akan dikembangkan jika memang diperlukan.
 ## Inspirasi
 “Aplikasi Dot Product pada sistem temu balik aplikasi” oleh Rinaldi Munir
 https://informatika.stei.itb.ac.id/~rinaldi.munir/AljabarGeometri/2020-2021/Algeo-12-Aplikasi-dot-product-pada-IR.pdf
+"Templating With Jinja2 in Flask: Essentials" oleh Shalabh Aggarwal
+https://code.tutsplus.com/tutorials/templating-with-jinja2-in-flask-essentials--cms-25571
+"Flask Forms-Accept User Input Using Flask Forms"
+https://www.askpython.com/python-modules/flask/flask-forms
 
 
 ## Kontak
