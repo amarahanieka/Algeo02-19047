@@ -4,7 +4,7 @@
 ## Daftar Isi
 * [Informasi Umum](#informasi-umum)
 * [Screenshots](#screenshots)
-* [Pengaturan](#pengaturan-dan-instalasi)
+* [Pengaturan dan Instalasi](#pengaturan-dan-instalasi)
 * [Fitur](#fitur)
 * [Status](#status)
 * [Inspirasi](#inspirasi)
@@ -14,7 +14,7 @@
 Program ini dibuat dalam rangka menyelesaikan tugas besar kuliah IF2123 Aljabar Linier dan Geometri. Pada program ini kami menggunakan bahasa pemrograman Python dan menggunakan micro web framework Flask. Program ini bekerja dengan menerima input pengguna lalu akan menampilkan beberapa dokumen serta menunjukkan persentase kesamaan dokumen dengan kata yang ingin kita temukan. Program ini memanfaatkan <i>dot product</i> dalam algoritma pemrogramannya dengan persamaan similarity = (Query●Dokumen)/(||Query|| ||Dokumen||)
 
 ## Screenshots
-![screenshot](./test/screenshot2.jpg)
+![screenshot program](./test/screenshot2.jpg)
 
 ## Pengaturan dan instalasi
 * Pastikan python3 (versi yang direkomendasikan) sudah terinstall di PC anda.
@@ -40,8 +40,8 @@ Program ini dibuat dalam rangka menyelesaikan tugas besar kuliah IF2123 Aljabar 
 * Jika ingin membuka dokumen Anda hanya perlu mengklik judul yang muncul setelah Anda memasukkan kata kunci di mesin pencarian.
 * Informasi lengkap tentang program dapat diakses pada halaman Perihal yang ada di bagian tengah bawah atau dapat diakses melalui /perihal pada local host anda.
 
-## contoh kode 
-Contoh penggunaan
+## contoh hasil penggunaan 
+Berikut adalah contoh hasil pencarian dari mesin pencarian
 ```
 Query: trump joe biden umkm kepala desa
 
